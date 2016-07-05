@@ -2,8 +2,8 @@
 <body>
   <div id="content">
     <?php
-    require_once("../inc/conx.php");
-    $contentq = mysqli_query($conx, "SELECT id,post FROM feed LIMIT 3");
+    require_once("../inc/conx.php"); //change this to your connection file or info
+    $contentq = mysqli_query($conx, "SELECT id,post FROM feed LIMIT 3"); //change this to what you're grabbing from the database
     while($contentr = mysqli_fetch_assoc($contentq)) {
       $cnt_id = $contentr['id'];
       $cnt_txt = $contentr['post'];
@@ -13,7 +13,7 @@
   </div>
   <input id="amount" type="hidden" value="3">
   <?php
-  $cntq = mysqli_query($conx, "SELECT * FROM feed");
+  $cntq = mysqli_query($conx, "SELECT * FROM feed"); // change this to the table you're grabbing from the database
   $count = mysqli_num_rows($cntq);
   if($count > 3) {
     echo "<div id=\"more_div\"><button onclick=\"loadmore();\">more</button></div>";
