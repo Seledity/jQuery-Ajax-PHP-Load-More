@@ -22,6 +22,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>
   function loadmore() {
+    document.getElementById("more_div").innerHTML = '<button>...</button>';
     var amount = document.getElementById("amount").value;
     var content = document.getElementById("content");
     $.ajax({
@@ -40,6 +41,7 @@
     getcount.onreadystatechange = function(){
       if(getcount.readyState == 4)
       if(getcount.status == 200) {
+        document.getElementById("more_div").innerHTML = '<button onclick="loadmore();">more</button>';
         var numCont = getcount.responseText;
         if(numCont <= Number(amount) + 3) {
           document.getElementById("more_div").innerHTML = "";
@@ -47,6 +49,7 @@
       }
       else{
         alert("error");
+        document.getElementById("more_div").innerHTML = "error";
       }
     };
     getcount.send();
