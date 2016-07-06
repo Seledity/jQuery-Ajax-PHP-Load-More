@@ -13,8 +13,7 @@
   </div>
   <input id="amount" type="hidden" value="3">
   <?php
-  $cntq = mysqli_query($conx, "SELECT * FROM feed"); // change this to the table you're grabbing from the database
-  $count = mysqli_num_rows($cntq);
+  $count = mysqli_num_rows(mysqli_query($conx, "SELECT * FROM feed")); // change this to the table you're grabbing from the database
   if($count > 3) {
     echo "<div id=\"more_div\"><button onclick=\"loadmore();\">more</button></div>";
   }
